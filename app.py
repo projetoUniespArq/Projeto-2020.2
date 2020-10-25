@@ -7,7 +7,7 @@ def Login():
   matricula = input('Digite sua matricula: ')  
   
   # banco de dados
-  db = shelve.open('./projeto/database.db')
+  db = shelve.open('database.db')
   db['Aluno'] = {
     'nome': nome,
     'matricula': matricula
