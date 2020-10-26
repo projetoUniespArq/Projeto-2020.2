@@ -1,5 +1,6 @@
 import shelve
 
+# login de acesso
 def Login():
   print('* Faça seu acesso *')
   
@@ -10,8 +11,31 @@ def Login():
   db = shelve.open('database.db')
   db['Aluno'] = {
     'nome': nome,
-    'matricula': chaveAcesso
+    'acesso': chaveAcesso
   }
 
   print(f'Bem vindo {nome}, login efetuado com sucesso')
 Login()
+
+# home
+while True:
+  def Menu():
+    print('* Home *\n',
+          '- 1 Cadastrar categorias e temáticas\n',
+          '- 2 Cadastrar livro\n',
+          '- 3 Sair'
+        )
+    
+    value = int(input('Escolha uma das opções: '))
+    cases = {
+      1: lambda: print('first'),
+      2: lambda: print('second'),    
+    }
+    cases.get(value, lambda: print('...'))()
+  
+    if(value > 2):
+        print('O programa foi finalizado')
+  Menu()
+  break
+
+
