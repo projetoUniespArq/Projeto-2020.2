@@ -9,7 +9,7 @@ def Login():
   
   # banco de dados
   db = shelve.open('database.db')
-  db['Aluno'] = {
+  db['Funcionario'] = {
     'nome': nome,
     'acesso': chaveAcesso
   }
@@ -33,7 +33,7 @@ while True:
     }
     cases.get(value, lambda: print('...'))()
   
-    if(value > 2):
+    if(value == 3):
         print('O programa foi finalizado')
   Menu()
   break
