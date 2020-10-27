@@ -53,12 +53,12 @@ while True:
     cases = {
       1: lambda: CadastroCategorias(),
       2: lambda: print('second'),
-      3: lambda: print('second'),
-      4: lambda: print('second'),
-      5: lambda: print('second'),
-      6: lambda: print('second'),
-      7: lambda: print('second'),
-      8: lambda: print('second'),
+      3: lambda: print('third'),
+      4: lambda: print('fourth'),
+      5: lambda: print('fifth'),
+      6: lambda: print('sixth'),
+      7: lambda: print('seventh'),
+      8: lambda: print('octave'),
     }
     cases.get(value, lambda: print('...'))()
   
