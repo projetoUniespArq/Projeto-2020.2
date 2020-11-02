@@ -1,5 +1,3 @@
-import shelve
-
 # login de acesso
 
 print('* Faça seu acesso *')
@@ -8,30 +6,6 @@ nome  = input('Digite seu nome completo: ')
 chaveAcesso = input('Digite sua chave de acesso: ')  
 
 print(f'Bem vindo {nome}, login efetuado com sucesso')
-  
-# banco de dados
-db = shelve.open('database.db')
-db['Funcionario'] = {
-  'nome': nome,
-  'acesso': chaveAcesso
-}
-
-# cadastro de categoriais
-def CadastroCategorias():
-  categoria = input('Digite uma categoria: ')
-  tema = input('Digite um tema: ')
-
-  db['RegistroCategorias'] = {
-    'registrar': {
-       
-      'categoria': categoria,
-      'tema': tema  
-    }  
-  }
-
-  print(db['RegistroCategorias']['registrar'])
-
-
 
 # home
 while True:
@@ -51,7 +25,7 @@ while True:
     
     value = int(input('Escolha uma das opções: '))
     cases = {
-      1: lambda: CadastroCategorias(),
+      # 1: lambda: CadastroCategoriasTematicas(),
       2: lambda: print('second'),
       3: lambda: print('third'),
       4: lambda: print('fourth'),
