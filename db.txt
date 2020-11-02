@@ -60,3 +60,23 @@ COLLECTIONS:
  [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'g', 'Autor': 'sd', 'Ano': 12, 'Quantidade': 12, 'Assunto': 'sd'}]}]
 COLLECTIONS: 
  [{'Categoria': 'SD', 'Tematica': 'S', 'Livro': [{'Titulo': 'f', 'Autor': 's', 'Ano': 1, 'Quantidade': 2, 'Assunto': 's'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'FUTEBOL', 'Tematica': 'TIMES DO BRASIL', 'Livro': [{'Titulo': 'flamengo', 'Autor': 'flamengo', 'Ano': 2020, 'Quantidade': 20000, 'Assunto': 'futebol'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'DS', 'Tematica': 'SD', 'Livro': [{'Titulo': 'sd', 'Autor': 'sd', 'Ano': 23, 'Quantidade': 12, 'Assunto': 'sd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'DD', 'Tematica': 'DD', 'Livro': [{'Titulo': 'dds', 'Autor': 'sd', 'Ano': 3212, 'Quantidade': 32, 'Assunto': 'sd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'ds', 'Autor': 'sd', 'Ano': 2, 'Quantidade': 2, 'Assunto': 'sd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'gg', 'Autor': 'df', 'Ano': 344, 'Quantidade': 2, 'Assunto': 'fd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'ds', 'Autor': 'sd', 'Ano': 23, 'Quantidade': 12, 'Assunto': 'sd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'sd', 'Autor': 'df', 'Ano': 23, 'Quantidade': 23, 'Assunto': '1'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SX', 'Livro': [{'Titulo': 'sd', 'Autor': 'sd', 'Ano': 2, 'Quantidade': 2, 'Assunto': 'ds'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'sd', 'Autor': 'sd', 'Ano': 2, 'Quantidade': 2, 'Assunto': 'sd'}]}]
+COLLECTIONS: 
+ [{'Categoria': 'SD', 'Tematica': 'SD', 'Livro': [{'Titulo': 'hg', 'Autor': 'f', 'Ano': 43, 'Quantidade': 34, 'Assunto': 'df'}]}]

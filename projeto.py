@@ -10,14 +10,14 @@ tematica = dict ()
 def menu ():
     print("Menu:")
     print("    1-Cadastro de categorias e temáticas")
-    print("    2-Cadastro de novos livros")
+    print("    2-Configurações de livros")
     print("    3-Editar quantidade de um titulo")
     # print("    4-Excluir livros")
-    print("    4-Busca por exemplares")
-    print("    5-Importar informações de um livro por arquivo")
-    print("    6-Status de livros")
-    print("    7-Gerar relatorios")
-    print('    8-Sair do sistema')
+    # print("    4-Busca por exemplares")
+    print("    4-Importar informações de um livro por arquivo")
+    print("    5-Status de livros")
+    print("    6-Gerar relatorios")
+    print('    7-Sair do sistema')
     opc = int(input('    Digite sua opção: '))
     return opc
 
@@ -35,7 +35,8 @@ def cadastroCategoriasTematicas ():
                 lcategoria.append(categoria.copy())
                 print(lcategoria)
                 print("Categoria cadastrada com sucesso!")
-                main()           
+                cadastroCategoriasTematicas()
+                # main()           
         elif (opc==2): 
             cOrdenado=sorted(lcategoria,key=lambda l:l["Categoria"])
             for i, j in enumerate (cOrdenado,start=1):
@@ -53,7 +54,7 @@ def cadastroCategoriasTematicas ():
                 print("Temática já cadastrada")               
         elif (opc==3):
                 main()    
-def cadastroLivros ():
+def configuracoesLivro():
     print("-----Cadastro de Livros------")
     tOrdenado=sorted(ltematica,key=lambda l:(l["Categoria"],l["Tematica"]))
     for i, j in enumerate (tOrdenado,start=1):
@@ -79,7 +80,7 @@ def cadastroLivros ():
         arquivo.write(f'COLLECTIONS: \n {ltematica}\n')
 
 
-        print('Digite 1 para remover livros: ', '\nDigite 2 para voltar ao menu: ')
+        print('Digite 1 para remover livros: ', '\nDigite 2 para procurar livro' ,'\nDigite 3 para voltar ao menu: ')
         value = int(input('Digite um valor: '))
 
         if(value == 1):
@@ -89,11 +90,24 @@ def cadastroLivros ():
             if(x == livro["Titulo"]):
                 del livro
                 print('Livro deletado com sucesso')
-            main()
-          
-        else:
+                
             main()
 
+        elif(value == 2):
+            print('*Buscar por exemplares')
+
+            lv = input('Digite o nome do livro: ')
+
+            if(lv == livro["Titulo"]):
+                print(livro)
+            else:
+                print('Esse livro não esta disponivel')
+
+            main()
+
+        else:
+            main()
+        
     else:
         print("Livro já cadastrado")
 
@@ -107,18 +121,18 @@ def main ():
     while True:
         case = {
             1: lambda: cadastroCategoriasTematicas(),
-            2: lambda: cadastroLivros(),
+            2: lambda: configuracoesLivro(),
             3: lambda: print('third'),
             # 4: lambda: removeLivro(),
-            4: lambda: print('fifth'),
-            5: lambda: print('sixth'),
-            6: lambda: print('seventh'),
-            7: lambda: print('octave'),
+            # 4: lambda: buscarLivro(),
+            4: lambda: print('sixth'),
+            5: lambda: print('seventh'),
+            6: lambda: print('octave'),
         }
 
         case.get(opcao, lambda: print('carregando...'))()
 
-        if(opcao >= 9):
+        if(opcao >= 7):
             print('programa encerrado')
             break
 
