@@ -74,8 +74,6 @@ def cadastroLivros ():
               
         print(ltematica)
         print(llivro)
-        print(f'Titulo do livro {livro["Titulo"]}')
-
 
         arquivo = open('db.txt', 'a')
         arquivo.write(f'COLLECTIONS: \n {ltematica}\n')
