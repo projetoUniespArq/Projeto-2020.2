@@ -78,15 +78,16 @@ def addLivro ():
 def quantidadeLivros ():
     nomeLivro= (input("Digite o nome do livro que deseja editar a quantidade: "))
     for i in range (len(llivro)):
-        print(i)
-        print(len(livro))
         if llivro[i]["Titulo"] == nomeLivro:
             quantidade = int(input("Livro encontrado!\nAgora informe a quantidade: "))
             llivro[i]["Quantidade"]=quantidade
             print("Atulizada com sucesso!")
+            print(llivro)
+            
             main()
-        elif i==len(llivro) and nomeLivro not in llivro[i]["Titulo"]:
-            print("Livro não encontrado")
+    else:                
+        print("Livro não encontrado!")
+        main()
 def main ():
     opcao=menu ()
     while True:
