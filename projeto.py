@@ -10,11 +10,11 @@ def menu ():
     print("    2-Configurações de livros")
     print("    3-Editar quantidade de um titulo")
     print("    4-Excluir livros")
-    print("    4-Busca por exemplares")
-    print("    4-Importar informações de um livro por arquivo")
-    print("    5-Status de livros")
-    print("    6-Gerar relatorios")
-    print('    7-Sair do sistema')
+    print("    5-Busca por exemplares")
+    print("    6-Importar informações de um livro por arquivo")
+    print("    7-Status de livros")
+    print("    8-Gerar relatorios")
+    print('    9-Sair do sistema')
     opc = int(input('    Digite sua opção: '))
     return opc
   
@@ -29,7 +29,7 @@ def cadastroCategoriasTematicas ():
                 lcategoria.append(categoria)
                 print(lcategoria)
                 print("Categoria cadastrada com sucesso!")
-                main()
+                cadastroCategoriasTematicas()
             else: 
                 print("Categoria já foi cadastrada")               
         elif (opc==2):
@@ -58,7 +58,7 @@ def addLivro ():
     newBook = int(input("\nDigite o numero correspondente a categoria e a tematica: "))
     recebendoDados= ltematica[newBook-1]
     recebendoCategoria= list(recebendoDados.keys())
-    recebendoTematica=list(recebendoDados.values())
+    recebendoTematica= list(recebendoDados.values())
     livro = {
         "Titulo": input("Informe o titulo: "),
         "Autor": input("Informe o Autor: "),
@@ -88,6 +88,39 @@ def quantidadeLivros ():
     else:                
         print("Livro não encontrado!")
         main()
+
+def excluirLivro():
+    for i in range (len(llivro)):
+        print('---------------------------------------')
+        pesquisar = input('Procure pelo livro: ')
+        print('---------------------------------------')
+
+        if pesquisar == llivro[i]["Titulo"]:
+
+            print(f'Titulo do livro - {llivro[i]["Titulo"]}')
+            print(f'Autor do livro - {llivro[i]["Autor"]}')
+            print(f'Ano do livro - {llivro[i]["Ano"]}')
+
+            print('---------------------------------------')
+            decisao = int(input('Digite 1 para deletar o livro ou 2 para voltar ao menu principal: '))
+            print('---------------------------------------')
+
+            if(decisao == 1):
+
+                del(llivro[i])
+                print('Livro deletado com sucesso! ')
+                print(llivro)
+
+        else:
+            print('livro não encontrado')
+
+
+
+        
+
+    main()
+        
+
 def main ():
     opcao=menu ()
     while True:
@@ -95,19 +128,12 @@ def main ():
             1: lambda: cadastroCategoriasTematicas(),
             2: lambda: addLivro(),
             3: lambda: quantidadeLivros(),
-            # 4: lambda: removeLivro(),
-            # 4: lambda: buscarLivro(),
-            4: lambda: print('sixth'),
-            5: lambda: print('seventh'),
-            6: lambda: print('octave'),
+            4: lambda: excluirLivro(),
+            
         }
 
-        case.get(opcao, lambda: print('carregando...'))()
-
-        if(opcao >= 7):
-            print('programa encerrado')
+        case.get(opcao, lambda: print('...'))()
+        if( opcao >= 9):
             break
-
-            
-              
-main ()
+        
+main()
