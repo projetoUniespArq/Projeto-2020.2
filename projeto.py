@@ -128,7 +128,10 @@ def buscarExemplares():
 
 def status():
     for i in range(len(llivro)):
-        if(llivro[i]):
+        print('----------------------------------')
+
+        n = input('Digite o nome do livro: ')
+        if(n == llivro[i]["Titulo"]):
             print('----------------------------------')
 
             print(f'Livro - {llivro[i]["Titulo"]}')
