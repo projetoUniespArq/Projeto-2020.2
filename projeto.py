@@ -4,20 +4,7 @@ llivro = []
 livro = dict()
 tematica = dict ()
 
-def menu ():
-    print("Menu:")
-    print("    1-Cadastro de categorias e temáticas")
-    print("    2-Configurações de livros")
-    print("    3-Editar quantidade de um titulo")
-    print("    4-Excluir livros")
-    print("    5-Busca por exemplares")
-    print("    6-Importar informações de um livro por arquivo")
-    print("    7-Status de livros")
-    print("    8-Gerar relatorios")
-    print('    9-Sair do sistema')
-    opc = int(input('    Digite sua opção: '))
-    return opc
-  
+
 def cadastroCategoriasTematicas ():
     
     print("-----Cadastro de Categorias e Temáticas------")
@@ -66,7 +53,8 @@ def addLivro ():
         "Quantidade":int(input("Informe a quantidade de livros: ")),
         "Assunto": input("Digite o Assunto: "),
         "Categoria":recebendoCategoria[0],
-        "Tematica":recebendoTematica[0]  
+        "Tematica":recebendoTematica[0], 
+         
     } 
     if livro not in llivro:
         llivro.append(livro.copy())
@@ -88,6 +76,7 @@ def quantidadeLivros ():
     else:                
         print("Livro não encontrado!")
         main()
+
 
 def excluirLivro():
     for i in range (len(llivro)):
@@ -112,28 +101,85 @@ def excluirLivro():
                 print(llivro)
 
         else:
-            print('livro não encontrado')
-
-
-
-        
+            print('livro não encontrado') 
 
     main()
+
+def buscarExemplares():
+    for i in range(len(llivro)):
+        print('----------------------------------')
+        procurar = input('Digite o nome do exemplar: ')
+
+        if(procurar == llivro[i]["Titulo"]):
+            print('----------------------------------')
+
+            print(f'livro - {llivro[i]["Titulo"]}')
+            print(f'autor - {llivro[i]["Autor"]}')
+            print(f'status - {llivro[i]["Status"]}')
+
+            print('----------------------------------')
+
+        else:
+            print('----------------------------------')
+
+            print('livro não encontrado')
         
+    main()
+
+def status():
+    for i in range(len(llivro)):
+        if(llivro[i]):
+            print('----------------------------------')
+
+            print(f'Livro - {llivro[i]["Titulo"]}')
+            print(f'Autor - {llivro[i]["Autor"]}')
+            print(f'Ano - {llivro[i]["Ano"]}')
+
+            print('Registre o status que esse livro se encontrar')
+
+            stus = input(': ')
+
+            llivro[i]["Status"] = stus
+
+            print(llivro[i])
+            print('----------------------------------')
+
+        else:
+            print('----------------------------------')
+
+            print('livro não encotrado')
+
+    main()
 
 def main ():
-    opcao=menu ()
     while True:
+        print("Menu:")
+        print("    1-Cadastro de categorias e temáticas")
+        print("    2-Configurações de livros")
+        print("    3-Editar quantidade de um titulo")
+        print("    4-Excluir livros")
+        print("    5-Busca por exemplares")
+        print("    6-Cadastrar status de livro")
+        print("    7-Importar informações de um livro por arquivo")
+        print("    8-Gerar relatorios")
+        print('    9-Sair do sistema')
+        opcao = int(input('    Digite sua opção: '))
+        
+       
+           
+
         case = {
             1: lambda: cadastroCategoriasTematicas(),
             2: lambda: addLivro(),
             3: lambda: quantidadeLivros(),
             4: lambda: excluirLivro(),
-            
+            5: lambda: buscarExemplares(),
+            6: lambda: status()
         }
-
+            
         case.get(opcao, lambda: print('...'))()
-        if( opcao >= 9):
-            break
+        break
+       
         
+     
 main()
