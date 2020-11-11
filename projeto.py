@@ -105,27 +105,6 @@ def excluirLivro():
 
     main()
 
-def buscarExemplares():
-    for i in range(len(llivro)):
-        print('----------------------------------')
-        procurar = input('Digite o nome do exemplar: ')
-
-        if(procurar == llivro[i]["Titulo"]):
-            print('----------------------------------')
-
-            print(f'livro - {llivro[i]["Titulo"]}')
-            print(f'autor - {llivro[i]["Autor"]}')
-            print(f'status - {llivro[i]["Status"]}')
-
-            print('----------------------------------')
-
-        else:
-            print('----------------------------------')
-
-            print('livro não encontrado')
-        
-    main()
-
 def status():
     for i in range(len(llivro)):
         print('----------------------------------')
@@ -153,6 +132,37 @@ def status():
             print('livro não encotrado')
 
     main()
+
+def buscarExemplares():
+    for i in range(len(llivro)):
+
+        
+        print('----------------------------------')
+        print('*LEMBRE-SE DE CADASTRAR UM STATUS ANTES*')
+        procurar = input('Digite o nome do exemplar ou digite sair para voltar ao menu : ')
+
+            
+        if procurar == 'sair':
+            main()
+        
+
+        elif(procurar == llivro[i]["Titulo"]):
+                
+            print('----------------------------------')
+
+            print(f'livro - {llivro[i]["Titulo"]}')
+            print(f'autor - {llivro[i]["Autor"]}')
+            print(f'status - {llivro[i]["Status"]}')
+
+            print('----------------------------------')
+        else:
+            print('----------------------------------')
+
+            print('livro não encontrado')
+        
+    main()
+
+
 
 def main ():
     while True:
