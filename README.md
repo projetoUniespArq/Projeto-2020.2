@@ -1,4 +1,4 @@
-# Projeto-2020.2
+# Projeto-2020.2 - docs
 
 funcionamento do projeto:
 Assim que o projeto for executado, vai abrir um MENU com as opções de configuração
