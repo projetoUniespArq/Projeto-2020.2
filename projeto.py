@@ -58,7 +58,14 @@ def addLivro ():
     } 
     if livro not in llivro:
         llivro.append(livro.copy())
+        
+        arq = open('database.txt', 'a', encoding="utf8")
+        
+        armazena = f'{livro["Titulo"]}, {livro["Autor"]}, {livro["Ano"]} \n'
+        arq.writelines(armazena)
+        
         print(llivro)
+        
         main()
     else:
         print("Livro já cadastrado")
@@ -162,8 +169,33 @@ def buscarExemplares():
         
     main()
 
+def arquivo():
+    arq = open('database.txt', 'r')
+    with open('database.txt') as arq:
+
+        lista = list(arq)
+        print(lista)
+        
+        for li in lista:
+            Type = li.strip().split(',')
+            print(f'*{Type}')
+           
+
+            titulo = input('Digite o nome do livro: ')
+            
+            
+            if(titulo == Type[0]):
+                print(f'Nome do livro {Type[0]}')
+                print(f'Nome do autor {Type[1]}')
+                print(f'Ano do livro {Type[2]}')
+
+        arq.close()
+                
+        main()
 
 
+                
+                
 def main ():
     while True:
         print("Menu:")
@@ -187,7 +219,8 @@ def main ():
             3: lambda: quantidadeLivros(),
             4: lambda: excluirLivro(),
             5: lambda: buscarExemplares(),
-            6: lambda: status()
+            6: lambda: status(),
+            7: lambda: arquivo()
         }
             
         case.get(opcao, lambda: print('...'))()
