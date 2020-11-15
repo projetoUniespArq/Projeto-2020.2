@@ -175,15 +175,13 @@ def arquivo():
 
         lista = list(arq)
         print(lista)
-        
+
         for li in lista:
             Type = li.strip().split(',')
             print(f'*{Type}')
            
-
             titulo = input('Digite o nome do livro: ')
-            
-            
+        
             if(titulo == Type[0]):
                 print(f'Nome do livro {Type[0]}')
                 print(f'Nome do autor {Type[1]}')
