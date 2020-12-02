@@ -57,8 +57,20 @@ def addLivro ():
         "Tematica":recebendoTematica[0],     
     } 
     if livro not in llivro:
+<<<<<<< HEAD
         llivro.append(livro)
         print("Livro cadastrado com sucesso!")
+=======
+        llivro.append(livro.copy())
+        
+        arq = open('database.txt', 'a', encoding="utf8")
+        
+        armazena = f'{livro["Titulo"]}, {livro["Autor"]}, {livro["Ano"]} \n'
+        arq.writelines(armazena)
+        
+        print(llivro)
+        
+>>>>>>> 6c8b271cee19726b407aeac42a922f0ddc9f4305
         main()
     else:
         print("Livro já foi cadastrado!")
@@ -169,6 +181,7 @@ def buscarExemplares():
         
     main()
 
+<<<<<<< HEAD
 def gerarRelatorio ():
     print("-----Relatórios------")
     opcaoRelatorio=int(input("1-Relatorio das Categorias existentes no acervo\n2-Relatorio das tematicas no acervo\n3-Relatorios do acervo: "))
@@ -230,8 +243,33 @@ def livroExterno ():
         main()
     else:
         print("Livro já cadastrado")
+=======
+def arquivo():
+    arq = open('database.txt', 'r')
+    with open('database.txt') as arq:
+>>>>>>> 6c8b271cee19726b407aeac42a922f0ddc9f4305
+
+        lista = list(arq)
+        print(lista)
+
+        for li in lista:
+            Type = li.strip().split(',')
+            print(f'*{Type}')
+           
+            titulo = input('Digite o nome do livro: ')
+        
+            if(titulo == Type[0]):
+                print(f'Nome do livro {Type[0]}')
+                print(f'Nome do autor {Type[1]}')
+                print(f'Ano do livro {Type[2]}')
+
+        arq.close()
+                
+        main()
 
 
+                
+                
 def main ():
     while True:
         print("Menu:")
@@ -253,8 +291,12 @@ def main ():
             4: lambda: excluirLivro(),
             5: lambda: buscarExemplares(),
             6: lambda: status(),
+<<<<<<< HEAD
             7: lambda: livroExterno(),
             8: lambda: gerarRelatorio()
+=======
+            7: lambda: arquivo()
+>>>>>>> 6c8b271cee19726b407aeac42a922f0ddc9f4305
         }
             
         case.get(opcao, lambda: print('...'))()
