@@ -5,12 +5,12 @@ llivroExcluidos = []
 larqCategoria = []
 larqTematica = []
 larqArcevo = []
+entrada = list ()
 livro = dict()
 tematica = dict ()
 
 
 def menu ():
-    print("Menu:")
     print("Menu:")
     print("    1-Cadastro de categorias e temáticas")
     print("    2-Adicionar Livros")
@@ -23,6 +23,13 @@ def menu ():
     print('    9-Sair do sistema')
     opcao = int(input('    Digite sua opção: '))
     return opcao
+
+def login ():
+    if entrada == []:
+        usuario = input("Digite o seu usuário: ")
+        senha= input("Digite sua senha: ")
+        entrada.append(usuario)
+        entrada.append(senha)
 
 def cadastroCategoriasTematicas ():
     print("-----Cadastro de Categorias e Temáticas------")
@@ -53,6 +60,7 @@ def cadastroCategoriasTematicas ():
                 cadastroCategoriasTematicas()              
         elif (opc==3):
                 main()
+
 def addLivro ():
     print("-----Cadastro de Livros------")
     for k,l in enumerate (ltematica):
@@ -69,7 +77,8 @@ def addLivro ():
         "Quantidade":int(input("Informe a quantidade de livros: ")),
         "Assunto": input("Digite o Assunto: "),
         "Categoria":recebendoCategoria[0],
-        "Tematica":recebendoTematica[0],     
+        "Tematica":recebendoTematica[0],
+        "Tipo":(input("R-Livro pode ser reservado\nN-Livro Não pode ser reservado"))
     } 
     if livro not in llivro:
         print("Livro cadastrado com sucesso!")
@@ -104,11 +113,15 @@ def excluirLivro():
                 print(f'Ano do livro - {llivro[i]["Ano"]}')     
                 llivroExcluidos.append(i)
                 print('---------------------------------------')
+            elif llivroExcluidos == []:
+                ("Não existem livros nesse intervalo")
+                main()
         decisaoExcluir = int(input('Digite 1 para deletar o livro ou 2 para voltar ao menu principal: '))
         if decisaoExcluir == 1:
             for i in llivroExcluidos:
                 del(llivro[i])
-            print(llivro)
+                print("Livro Excluidos")
+            main()
     if forma == 2:
         pesquisar = input('Procure pelo livro: ')
         for i in range (len(llivro)):
@@ -124,99 +137,101 @@ def excluirLivro():
                     print('Livro deletado com sucesso! ')
                     print(llivro)
         else:
-            print('livro não encontrado') 
+            print('Livro não encontrado') 
     main()
 
 def status():
-    for i in range(len(llivro)):
+    
         print('----------------------------------')
 
         n = input('Digite o nome do livro: ')
-        if(n == llivro[i]["Titulo"]):
-            print('----------------------------------')
+        for i in range(len(llivro)):
+            if(n == llivro[i]["Titulo"]):
+                print('----------------------------------')
 
-            print(f'Livro - {llivro[i]["Titulo"]}')
-            print(f'Autor - {llivro[i]["Autor"]}')
-            print(f'Ano - {llivro[i]["Ano"]}')
+                print(f'Livro - {llivro[i]["Titulo"]}')
+                print(f'Autor - {llivro[i]["Autor"]}')
+                print(f'Ano - {llivro[i]["Ano"]}')
 
-            print('Registre o status que esse livro se encontrar')
+                print('Registre o status que esse livro se encontrar')
 
-            stus = input(': ')
+                stus = input(': ')
 
-            llivro[i]["Status"] = stus
+                llivro[i]["Status"] = stus
 
-            print(llivro[i])
-            print('----------------------------------')
-
+                print(llivro[i])
+                print('----------------------------------')
         else:
             print('----------------------------------')
 
-            print('livro não encotrado')
+            print('Livro não encotrado')
 
-    main()
+        main()
 
 def buscarExemplares():
-    for i in range(len(llivro)):
-
-        
         print('----------------------------------')
         print('*LEMBRE-SE DE CADASTRAR UM STATUS ANTES*')
-        procurar = input('Digite o nome do exemplar ou digite sair para voltar ao menu : ')
-
-            
+        procurar = input('Digite o nome do exemplar ou digite sair para voltar ao menu : ')    
         if procurar == 'sair':
             main()
+        for i in range(len(llivro)):
+            if(procurar == llivro[i]["Titulo"]):
+                    
+                print('----------------------------------')
+
+                print(f'livro - {llivro[i]["Titulo"]}')
+                print(f'autor - {llivro[i]["Autor"]}')
+                print(f'status - {llivro[i]["Status"]}')
+
+                print('----------------------------------')
+            else:
+                print('----------------------------------')
+
+                print('L0ivro não encontrado')
         
-
-        elif(procurar == llivro[i]["Titulo"]):
-                
-            print('----------------------------------')
-
-            print(f'livro - {llivro[i]["Titulo"]}')
-            print(f'autor - {llivro[i]["Autor"]}')
-            print(f'status - {llivro[i]["Status"]}')
-
-            print('----------------------------------')
-        else:
-            print('----------------------------------')
-
-            print('livro não encontrado')
-        
-    main()
-
+        main()
 
 def gerarRelatorio ():
     print("-----Relatórios------")
     opcaoRelatorio=int(input("1-Relatorio das Categorias existentes no acervo\n2-Relatorio das tematicas no acervo\n3-Relatorios do acervo: "))
     if opcaoRelatorio == 1:
-        cArquivo = open("categoria.txt","a")
-        larqCategoria.append("Categorias cadastradas no arcevo:\n")
-        for i in lcategoria:
+        informe = input("Digite a categoria: ")
+        if informe in lcategoria:
+            cArquivo = open("categoria.txt","a")
+            larqCategoria.append("Categoria cadastrada no arcevo:\n")
             larqCategoria.append("-")
-            larqCategoria.append(str(i))
+            larqCategoria.append(str(informe))
             larqCategoria.append("  \n")
-        larqCategoria.append("***********************************")
-        larqCategoria.append(f"\nQuantidade de categorias no acervo: {len(lcategoria)}")
-        larqCategoria.append("  \n")
-        cArquivo.writelines(larqCategoria)
-        cArquivo.close()
-        print("Relatorio gerado com sucesso! ")
-        main ()
+            larqCategoria.append("***********************************")
+            larqCategoria.append(f"\nQuantidade de categorias no acervo: {len(lcategoria)}")
+            larqCategoria.append("  \n")
+            cArquivo.writelines(larqCategoria)
+            cArquivo.close()
+            print("Relatorio gerado com sucesso! ")
+            main ()
+        else:
+            print("Não existe essa categoria no arcevo")
+            main()
+    
     elif opcaoRelatorio == 2:
-        tArquivo = open ("tematica.txt","a")
-        larqTematica.append("Essas são as tematicas associadas as categorias existentes:\n")
+        informeTematica = input("Digite a tematica: ")
         for i in ltematica:
             for j,l in i.items ():
-                larqTematica.append(str(j))
-                larqTematica.append("-")
-                larqTematica.append(str(l))
-                larqTematica.append("  \n")
-        larqTematica.append("***********************************")
-        larqTematica.append(f"\nQuantidade de tematicas no acervo: {len(ltematica)}")
-        tArquivo.writelines(larqTematica)
-        tArquivo.close()
-        print("Relatorio gerado com sucesso! ")
-        main ()
+                if informeTematica == l:
+                    tArquivo = open ("tematica.txt","a")
+                    larqTematica.append("Essa tematicas cadastrada no acervo:\n")
+                    larqTematica.append("-")
+                    larqTematica.append(str(l))
+                    larqTematica.append("  \n")
+                    larqTematica.append("***********************************")
+                    larqTematica.append(f"\nQuantidade de tematicas no acervo: {len(ltematica)}")
+                    tArquivo.writelines(larqTematica)
+                    tArquivo.close()
+                    print("Relatorio gerado com sucesso! ")
+                    main ()
+                else:
+                    print("Tematica não existe no acervo")
+                    main()
     elif opcaoRelatorio == 3:
         arcevo = open("arcevo.txt","a")
         larqArcevo.append("Relatorio do acervo:\n")
@@ -227,10 +242,10 @@ def gerarRelatorio ():
         arcevo.close()
         print("Relatorio gerado com sucesso! ")
         main ()
+
 def livroExterno ():
     print("-----Livro Externo------")
-    pasta = input("Digite nome do arquivo com formato que foi salvo o arquivo: ")
-    arquivo = open(pasta,"r").readline().split(";")
+    arquivo = open("livro.txt","r").readline().split(";")
     livro = {
         "Titulo": arquivo[0],
         "Autor": arquivo[1],
@@ -238,7 +253,8 @@ def livroExterno ():
         "Quantidade":arquivo[3],
         "Assunto": arquivo[4],
         "Categoria":arquivo[5],
-        "Tematica":arquivo[6],     
+        "Tematica":arquivo[6],
+        "Tipo":arquivo[7]  
     } 
     if livro not in llivro:
         llivro.append(livro.copy())
@@ -246,11 +262,12 @@ def livroExterno ():
         main()
     else:
         print("Livro já cadastrado")
-              
+             
 def main ():
+    login()
     opcao=menu ()
     while True:
-        case = {
+        case = {  
             1: lambda: cadastroCategoriasTematicas(),
             2: lambda: addLivro(),
             3: lambda: quantidadeLivros(),
@@ -259,10 +276,8 @@ def main ():
             6: lambda: status(),
             7: lambda: livroExterno(),
             8: lambda: gerarRelatorio()
-        }   
-        case.get(opcao, lambda: print('...'))()
-        if(opcao >= 9):
-            print('programa encerrado')
-            break
-                         
+        } 
+        case.get(opcao, lambda: print('Encerrando Programa...'))()
+        if opcao >= 9:
+            break                         
 main()
