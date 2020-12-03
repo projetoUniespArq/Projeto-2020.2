@@ -78,7 +78,7 @@ def addLivro ():
         "Assunto": input("Digite o Assunto: "),
         "Categoria":recebendoCategoria[0],
         "Tematica":recebendoTematica[0],
-        "Tipo":(input("R-Livro pode ser reservado\nN-Livro Não pode ser reservado"))
+        "Tipo":(input("R-Livro pode ser reservado\nN-Livro Não pode ser reservado: ")).upper()
     } 
     if livro not in llivro:
         print("Livro cadastrado com sucesso!")
@@ -113,9 +113,9 @@ def excluirLivro():
                 print(f'Ano do livro - {llivro[i]["Ano"]}')     
                 llivroExcluidos.append(i)
                 print('---------------------------------------')
-            elif llivroExcluidos == []:
-                ("Não existem livros nesse intervalo")
-                main()
+        if llivroExcluidos == []:
+            print("Não existem livros nesse intervalo")
+            main ()
         decisaoExcluir = int(input('Digite 1 para deletar o livro ou 2 para voltar ao menu principal: '))
         if decisaoExcluir == 1:
             for i in llivroExcluidos:
@@ -259,6 +259,7 @@ def livroExterno ():
     if livro not in llivro:
         llivro.append(livro.copy())
         print("Livro cadastrado com sucesso!")
+        print(llivro)
         main()
     else:
         print("Livro já cadastrado")
